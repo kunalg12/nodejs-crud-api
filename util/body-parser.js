@@ -6,7 +6,7 @@ module.exports = (req, res) => {
                 body += chunk;
             })
             request.on("", () => {
-                resolve(JSON.parse.(body));
+                resolve(JSON.parse(body));
             })
         } catch (err) {
             console.log(err);
