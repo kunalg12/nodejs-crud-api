@@ -24,4 +24,19 @@ module.exports = (req, res) => {
       return movie.id === id;
     });
 
-   
+    if (filteredMovie.length > 0) {
+      res.statusCode = 200;
+      res.write(JSON.stringify(filteredMovie));
+      res.end();
+    } else {
+      res.statusCode = 404;
+      res.write(
+        JSON.stringify({ title: "Not Found", message: "Movie not found" })
+      );
+      res.end();
+    }
+  } else {
+    res.writeHead(404, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ title: "Not Found", message: "Route not found" }));
+  }
+};
